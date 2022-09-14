@@ -2,7 +2,7 @@ use Mix.Config
 
 # NOTE: this file contains some security keys/certs that are *not* secrets, and are only used for local development purposes.
 
-host = "smartexpo.norwayeast.cloudapp.azure.com"
+host = "smartexpo.smartlab.ba"
 cors_proxy_host = "hubs-proxy.local"
 assets_host = "hubs-assets.local"
 link_host = "hubs-link.local"
@@ -141,7 +141,7 @@ config :ret, Ret.Speelycaptor, speelycaptor_endpoint: "https://1dhaogh2hd.execut
 
 config :ret, Ret.Storage,
   host: "https://#{host}",
-  storage_path: "/home/skyglory/hubs/reticulum/storage",
+  storage_path: "/home/ernad/hubs/reticulum/storage",
   ttl: 60 * 60 * 24
 
 asset_hosts =
@@ -174,8 +174,7 @@ config :ret, RetWeb.Email, from: "info@hubs-mail.com"
 
 config :ret, Ret.PermsToken,
   # This config value is for local development only.
-  perms_key:
-    "-----BEGIN RSA PRIVATE KEY-----\nMIICWwIBAAKBgHTNQXRAD5ebXfiIXWV8f73ox+NZT1zlpqMMtb4ZJdzfhra3zTbi\nYvimXyCznnLQF6n3OtUAKYm31t/UsQq/q64Mewx2Ovr+ipCJTj54cOlYO7qadpjx\nXBvT8Ep2KF4s/ipYzeWFqEYVtW1lq7E6uB5g/ktzOdet0EpR6gWe+5DDAgMBAAEC\ngYA+5JsfFrOOphlWj08DK6O5RdQERn3mfr5Yw6pFH1N0+GOYlaYJrKMwUp2chTuH\nhSeI3NgwA3NadcRdKDDgoc62HoYlBXWydUNHtJRUS+qd0Od97Q8+J9xhf2NdgAYF\ntBk8sevGxmC0WVajA5sUTadEdIq1l8uQQ3cuN92eJkj/UQJBANNM2O4y/69oRH+V\nm8amUyatw2ybKv/Mp6xErj50S/9+brgQETzUialyY9aYq02CinO46wQzTjBTAbq1\npDQY5KsCQQCNgsL/OQd3vvSo8LLEt/sru/s5G4Ndc3EjiU4XoMMGNarKEPswSg6Z\nqstUOd78q+dAiR/Z+6mN6tdxk8pEDxRJAkAUtjutXaJidz3/o5KZbkRITlARnUQh\nvtXQtQq/ZHbunF4N/MUzyUGVMnlG18Ay4NDhdwbSapUHd5t7ycJGuQnxAkAO/VDm\ndAYEeyezVXu6NrrWUR01WWK63WWYnAy3mAHQgJLMwKu6271cLalIDLFAFn1yapQD\nJRM6wyt7DmqYdvhxAkEAturKB+FhDW/v6P1hiIcbKOY6VWWLhr1EaK5JWiRpa/m0\n/bWVkbGTM0iQIQL/+JO629PMujjc1EK92x3wdncG7w==\n-----END RSA PRIVATE KEY-----"
+  perms_key: "-----BEGIN RSA PRIVATE KEY-----\nMIICWwIBAAKBgQDnkDhRG8iu3GYeD5FPsdPvHnVHnbC7VW6yi4GRBD6pjRfhWly3\nxwoOWQjUGV2qSqD/Z/RY2Ct4dVgBPemY9QtF1Topwy5AhU9DbCMYke+A+TcZfawX\nCOw6PM9vDzOiylL2IECiU42EnTSTUX8uDM6zG2fDkGDWuuxBinEwLHdEswIDAQAB\nAoGAaLTb4kEP85GRU1JywHiGfn9lRKbXPT4aOf2+7pXex8gW3j1/41HLCEXWKiH2\nKoRoXFTjNjE5JtTYoGcgc5uKJoNIGbZhMy8lxdcVXX9RXbfXrYVb9ldfT5Tt1gEr\n8JPv1wigJFSey67WMuuqaXSFZmOWKfP7l20uuYu4li9ACxECQQD6VgaNqqPBsfnD\nhb5raRxcR+TqIloJt7q7e0YSHVkaHLHAe+lFPhw2jJ6l7rU59vagsPYLOzQ1I8AL\nxRaCSxKdAkEA7M11/5m/oIQAlby9gdibgqSxd0+ncLz7UDbHxufL3/9v9gmd+b2D\nr24CX1MgmMzlOnRXJqkapWHjhfHm562rjwJAOQV/WKWVx3kSu0arqSu4Gg0GR46r\nk6sWDb52p4mn0hrXIlEXQX50TriZKpLFFP78Dn5AjS5fJfuOsx+hkOwowQJARAuG\nLLxxZB6KTHy/t+AWT6QjmrU42Bx12sbjATT6UJOGCJ0a1/itLmveIqYwZ7f45qMn\np+RP09YdGxA32br94QJASQRpe1ZatmwTpJbTre0CvXmUPB0JztzxTylcO+odVA0K\nZzluTpotT+hPG4kEDZQd4hoKuFp6b2YzwtmQq0bMhA==\n-----END RSA PRIVATE KEY-----"
 
 
 config :ret, Ret.OAuthToken, oauth_token_key: ""
