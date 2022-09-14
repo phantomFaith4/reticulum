@@ -166,9 +166,17 @@ config :ret, RetWeb.Plugs.AddCSP,
   media_src: asset_hosts,
   manifest_src: asset_hosts
 
-config :ret, Ret.Mailer, adapter: Bamboo.LocalAdapter
+config :ret, Ret.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: "smtp.mailgun.org",
+  port: 587,
+  username: "postmaster@sandbox487657c33b2c4f0c9a342e5e2df0de65.mailgun.org",
+  password: "a8cbfbefcc2a8dcc8c280db6701ad3fd-07a637b8-8f21f498",
+  tls: :if_available, # can be `:always` or `:never`
+  ssl: false, # can be `true`
+  retries: 1
 
-config :ret, RetWeb.Email, from: "info@hubs-mail.com"
+config :ret, RetWeb.Email, from: "postmaster@sandbox487657c33b2c4f0c9a342e5e2df0de65.mailgun.org"
 
 # config :ret, Ret.PermsToken, perms_key: (System.get_env("PERMS_KEY") || "") |> String.replace("\\n", "\n")
 
