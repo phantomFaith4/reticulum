@@ -7,7 +7,7 @@ defmodule RetWeb.Plugs.PostgrestProxy do
   def call(conn, []) do
     opts = ReverseProxyPlug.init(upstream: "http://#{hostname()}:3000")
     ReverseProxyPlug.call(conn, opts)
-
+    IO.inspect(hostname(),label: "hostname fun =>")
   end
 
   @spec hostname :: String.t()
