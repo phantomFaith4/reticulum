@@ -121,8 +121,8 @@ defmodule Ret.MediaResolver do
       resolved_ip ->
         if HttpUtils.internal_ip?(resolved_ip) do
           resolvedMedia = resolve_with_content_type(query)
-          IO.inspect(999 ,label: " resolved_ip -> fun =>")
           {:commit, resolvedMedia}
+          IO.inspect(hostname(),label: "hostname fun =>")
           # :forbidden
         else
           resolve_with_ytdl(query, root_host, query |> ytdl_format(root_host))
@@ -131,10 +131,8 @@ defmodule Ret.MediaResolver do
   end
 
   def resolve_with_content_type(%MediaResolverQuery{url: %URI{} = uri}) do
-    |> IO.inspect(label:"1")
     content_type = MIME.from_path(uri.path)
     uri |> resolved(%{expected_content_type: content_type})
-    |> IO.inspect(label:"2")
   end
 
   def resolve_with_ytdl(%MediaResolverQuery{} = query, root_host, ytdl_format) do
