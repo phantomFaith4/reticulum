@@ -112,9 +112,8 @@ defmodule Ret.MediaResolver do
   def resolve(%MediaResolverQuery{} = query, root_host) do
     # If we fall through all the known hosts above, we must validate the resolved ip for this host
     # to ensure that it is allowed.
-    |> IO.inspect
+    |> IO.inspect(label:"1")
     resolved_ip = HttpUtils.resolve_ip(query.url.host)
-    IO.inspect(resolved_ip ,label: " resolved_ip -> fun resolved_ip =>")
 
     case resolved_ip do
       nil ->
@@ -130,14 +129,14 @@ defmodule Ret.MediaResolver do
           resolve_with_ytdl(query, root_host, query |> ytdl_format(root_host))
         end
     end
-    |> IO.inspect
+    |> IO.inspect(label:"2")
   end
 
   def resolve_with_content_type(%MediaResolverQuery{url: %URI{} = uri}) do
-    |> IO.inspect
+    |> IO.inspect(label:"1")
     content_type = MIME.from_path(uri.path)
     uri |> resolved(%{expected_content_type: content_type})
-    |> IO.inspect
+    |> IO.inspect(label:"2")
   end
 
   def resolve_with_ytdl(%MediaResolverQuery{} = query, root_host, ytdl_format) do
