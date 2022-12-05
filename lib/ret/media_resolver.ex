@@ -122,7 +122,7 @@ defmodule Ret.MediaResolver do
         if HttpUtils.internal_ip?(resolved_ip) do
           resolvedMedia = resolve_with_content_type(query)
           {:commit, resolvedMedia}
-
+          IO.inspect(resolvedMedia ,label: " resolved_ip -> fun =>")
           # :forbidden
         else
           resolve_with_ytdl(query, root_host, query |> ytdl_format(root_host))
