@@ -154,35 +154,31 @@ defmodule RetWeb.Api.V1.MediaController do
 
   # This is an error response that we have cached ourselves
   defp render_resolved_media_or_error(conn, {_status, :error}) do
-    IO.inspect(666, label: "There was 500 error fun 1")
-    url = conn.params["media"]["url"]
-    IO.inspect(url, label: "render_resolved_media_or_error fun URL =>")
-    content_type = MIME.from_path(url)
-    IO.inspect(content_type, label: "There was 500 error fun content_type")
-    resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
 
-    IO.inspect(666, label: "render_resolved_media_or_error fun =>")
+    |> IO.inspect
+    url = conn.params["media"]["url"]
+    content_type = MIME.from_path(url)
+    resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
     render_resolved_media(conn, resolved_media)
+    |> IO.inspect
+
     #send_resp(conn, 500, "An error occured during media resolution")
   end
 
   # This is an error response that we have cached ourselves
   defp render_resolved_media_or_error(conn, {_status, {:error, _reason}}) do
-    IO.inspect(666, label: "There was 500 error fun 2")
     send_resp(conn, 500, "An error occured during media resolution")
   end
 
   # This is an unexpected error response from Cachex
   defp render_resolved_media_or_error(conn, {:error, _reason}) do
     Statix.increment("ret.media_resolver.unknown_cachex_error")
-    IO.inspect(666, label: "There was 500 error fun 3")
     send_resp(conn, 500, "An unexpected error occurred during media resolution.")
   end
 
   # This is an unexpected response from Cachex
   defp render_resolved_media_or_error(conn, _) do
     # We do not expect this code to run, so if it happens, something went wrong
-    IO.inspect(666, label: "There was 500 error fun 4")
     Statix.increment("ret.media_resolver.unknown_error")
     send_resp(conn, 500, "An unexpected error occurred during media resolution.")
   end
