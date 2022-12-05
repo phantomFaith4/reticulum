@@ -113,7 +113,7 @@ defmodule Ret.MediaResolver do
     # If we fall through all the known hosts above, we must validate the resolved ip for this host
     # to ensure that it is allowed.
     resolved_ip = HttpUtils.resolve_ip(query.url.host)
-
+    IO.inspect(resolved_ip ,label: " resolved_ip -> fun resolved_ip =>")
     case resolved_ip do
       nil ->
         :error
