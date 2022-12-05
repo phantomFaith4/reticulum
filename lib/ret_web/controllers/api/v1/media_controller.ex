@@ -160,6 +160,8 @@ defmodule RetWeb.Api.V1.MediaController do
     resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
 
     render_resolved_media(conn, resolved_media)
+    IO.puts("Testing media #{url} #{content_type} #{resolved_media}")
+    IO.puts("Testing media2 #{:url} #{:content_type} #{:resolved_media}")
     #send_resp(conn, 500, "An error occured during media resolution")
   end
 
