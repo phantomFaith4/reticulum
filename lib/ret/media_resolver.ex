@@ -124,6 +124,8 @@ defmodule Ret.MediaResolver do
       resolved_ip ->
         if HttpUtils.internal_ip?(resolved_ip) do
           resolvedMedia = resolve_with_content_type(query)
+          IO.puts("resolvedMedia=> #{:resolvedMedia}")
+          IO.puts("resolvedMedia=> #{resolvedMedia}")
           {:commit, resolvedMedia}
           # :forbidden
         else
