@@ -116,7 +116,7 @@ defmodule Ret.MediaResolver do
 
     resolved_ip = HttpUtils.resolve_ip(query.url.host)
 
-
+    IO.puts ("resolved ip => #{resolved_ip}")
     case resolved_ip do
       nil ->
         :error
