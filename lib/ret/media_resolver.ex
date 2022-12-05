@@ -114,6 +114,7 @@ defmodule Ret.MediaResolver do
     # to ensure that it is allowed.
     resolved_ip = HttpUtils.resolve_ip(query.url.host)
     IO.inspect(resolved_ip ,label: " resolved_ip -> fun resolved_ip =>")
+
     case resolved_ip do
       nil ->
         :error
@@ -132,6 +133,7 @@ defmodule Ret.MediaResolver do
 
   def resolve_with_content_type(%MediaResolverQuery{url: %URI{} = uri}) do
     content_type = MIME.from_path(uri.path)
+    IO.inspect(content_type ,label: " resolved_ip -> fun content_type =>")
     uri |> resolved(%{expected_content_type: content_type})
   end
 
