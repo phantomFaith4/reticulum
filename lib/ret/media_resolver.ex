@@ -128,6 +128,15 @@ defmodule Ret.MediaResolver do
         else
           resolve_with_ytdl(query, root_host, query |> ytdl_format(root_host))
         end
+
+        def resolve_with_content_type(%MediaResolverQuery{url: %URI{} = uri}) do
+          content_type = MIME.from_path(uri.path)
+          uri |> resolved(%{expected_content_type: content_type})
+        end
+    end
+    def resolve_with_content_type(%MediaResolverQuery{url: %URI{} = uri}) do
+      content_type = MIME.from_path(uri.path)
+      uri |> resolved(%{expected_content_type: content_type})
     end
   end
 
