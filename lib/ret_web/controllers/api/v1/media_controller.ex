@@ -159,8 +159,8 @@ defmodule RetWeb.Api.V1.MediaController do
     content_type = MIME.from_path(url)
     resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
 
-    render_resolved_media(conn, resolved_media)
     IO.inspect(resolved_media, label: "render_resolved_media_or_error fun =>")
+    render_resolved_media(conn, resolved_media)
     #send_resp(conn, 500, "An error occured during media resolution")
   end
 
