@@ -155,24 +155,21 @@ defmodule RetWeb.Api.V1.MediaController do
   # This is an error response that we have cached ourselves
   defp render_resolved_media_or_error(conn, {_status, :error}) do
 
-    IO.puts "=========>Hello word from media url"
-
     url = conn.params["media"]["url"]
     content_type = MIME.from_path(url)
     resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
+
     render_resolved_media(conn, resolved_media)
     #send_resp(conn, 500, "An error occured during media resolution")
   end
 
   # This is an error response that we have cached ourselves
   defp render_resolved_media_or_error(conn, {_status, {:error, _reason}}) do
-    IO.puts "=========>Hello word from media url 2"
     send_resp(conn, 500, "An error occured during media resolution")
   end
 
   # This is an unexpected error response from Cachex
   defp render_resolved_media_or_error(conn, {:error, _reason}) do
-    IO.puts "=========>Hello word from media url 3"
     Statix.increment("ret.media_resolver.unknown_cachex_error")
     send_resp(conn, 500, "An unexpected error occurred during media resolution.")
   end
@@ -180,7 +177,6 @@ defmodule RetWeb.Api.V1.MediaController do
   # This is an unexpected response from Cachex
   defp render_resolved_media_or_error(conn, _) do
     # We do not expect this code to run, so if it happens, something went wrong
-    IO.puts "=========>Hello word from media url 4"
     Statix.increment("ret.media_resolver.unknown_error")
     send_resp(conn, 500, "An unexpected error occurred during media resolution.")
   end

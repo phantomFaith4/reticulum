@@ -96,13 +96,11 @@ defmodule RetWeb.Router do
       pipe_through([:secure_headers])
     end
     forward("/", RetWeb.Plugs.PostgrestProxy)
-    IO.puts "=========>Hello word from media url 7"
   end
 
   scope "/api/ita" do
     pipe_through([:secure_headers, :auth_required, :admin_required, :proxy_api])
     forward("/", RetWeb.Plugs.ItaProxy)
-    IO.puts "=========>Hello word from media url 8"
   end
 
   scope "/api", RetWeb do
