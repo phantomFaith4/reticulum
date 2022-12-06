@@ -155,6 +155,8 @@ defmodule RetWeb.Api.V1.MediaController do
   # This is an error response that we have cached ourselves
   defp render_resolved_media_or_error(conn, {_status, :error}) do
 
+    IO.puts("=========================>WELP THIS IS 500 first function")
+
     url = conn.params["media"]["url"]
     content_type = MIME.from_path(url)
     resolved_media = URI.parse(url) |> Ret.MediaResolver.resolved(%{expected_content_type: content_type})
